@@ -1,13 +1,37 @@
 # dummy-hcd
-Make and DKMS support for dummy/Loopback USB host and device emulator driver.
 
+DKMS for Dummy/Loopback USB host and device emulator driver.
 
-~~~bash
 # Install
+
+## Clone
+
+```bash
 git clone https://github.com/RushOnline/dummy-hcd.git
-# Optional replace provided dummy_hcd.c with your own
-ln -snf $PATH_TO_LINUX_KERNEL_SOURCE/drivers/usb/gadget/udc/dummy_hcd.c dummy-hcd/
-sudo dkms install dummy-hcd
+```
+
+## Update source up to running kernel version
+
+```bash
+make update
+```
+
+## Add to DKMS
+
+```bash
+make dkms
+```
+
+# Load
+
+Emulate one USB2 connected device:
+
+```bash
+sudo modprobe dummy-hcd is_high_speed=1
+```
+
 # Remove
-# sudo dkms remove dummy-hcd/0.1 --all
-~~~
+
+```bash
+sudo dkms remove dummy-hcd/0.1 --all
+```
