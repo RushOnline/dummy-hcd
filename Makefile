@@ -8,7 +8,7 @@ PWD				:= $(shell pwd)
 build:
 	$(MAKE) modules
 
-install: modules
+install: build
 	$(MAKE) modules_install
 
 update:
